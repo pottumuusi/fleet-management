@@ -1,33 +1,40 @@
 #!/bin/bash
 
+# Support running with root user in a system that lacks sudo.
+if [ -z $(which sudo 2> /dev/null) ] ; then
+	SUDO=""
+else
+	SUDO="sudo"
+fi
+
 # Check if IPV6 is enabled in Linux
-sudo sysctl net.ipv6.conf.all.disable_ipv6
+${SUDO} sysctl net.ipv6.conf.all.disable_ipv6
 
 # Install firewall
-sudo apt install ufw
+${SUDO} apt install ufw
 
 # Initial firewall configuration, keeping ssh connection intact
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw enable
+${SUDO} ufw default deny incoming
+${SUDO} ufw default allow outgoing
+${SUDO} ufw allow ssh
+${SUDO} ufw enable
 
 # Check for IPV6 support in firewall
 grep IPV6 /etc/default/ufw
 
 # For Apache, allow port 80, http
-sudo ufw allow http
-sudo ufw status
+${SUDO} ufw allow http
+${SUDO} ufw status
 
 # Install Apache
-sudo apt install apache2
+${SUDO} apt install apache2
 
 # Default to apache being off
-sudo systemctl disable apache2
+${SUDO} systemctl disable apache2
 systemctl status apache2
 
 # Add web content for testing
-sudo mkdir /var/www/html/testing
-sudo sh -c "echo 'testing testing' > /var/www/html/testing/testing.txt"
+${SUDO} mkdir /var/www/html/testing
+${SUDO} sh -c "echo 'testing testing' > /var/www/html/testing/testing.txt"
 
 echo -e "\n In a web browser, navigate to http://<IP of the server>/testing\n"
