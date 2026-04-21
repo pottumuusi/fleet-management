@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Support running with root user in a system that lacks sudo.
 if [ -z $(which sudo 2> /dev/null) ] ; then
 	SUDO=""
