@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+main() {
+	read -s -p "Please provide password for password database: " db_pw
+
+	local -r target_disk_uuid=$(echo ${db_pw} | keepassxc-cli \
+		show \
+		--show-protected \
+		${HOME}/my/data/for_programs/keepass/Database.kdbx \
+		Network/home/cheetah/virtual_machine_disk_uuid \
+		| grep Password: \
+		| cut -d ' ' -f 2)
+	local -r cpu_specific_kvm_module=$(echo ${db_pw} | keepassxc-cli \
+		show \
+		--show-protected \
+		~/my/data/for_programs/keepass/Database.kdbx \
+		Network/home/cheetah/processor_specific_kvm_module \
+		| grep Password: \
+		| cut -d ' ' -f 2)
+
+	sudo mount UUID="${target_disk_uuid}" /mnt/temp
+	sudo modprobe -r "${cpu_specific_kvm_module}"
+	sudo modprobe -r kvm
+	virtualbox
+}
+
+main "${@}"
