@@ -11,6 +11,9 @@ readonly OPTIONS_LIVEFIRE=" \
 readonly OPTIONS_DRYRUN="${OPTIONS_LIVEFIRE} --dry-run"
 
 main() {
+    local -r share_source="${HOME}/my/share/"
+    local -r share_destination="/home/${DIGITAL_OCEAN_TOOLBOX_USER}/share/"
+
     local rsync_options=''
 
     if [ -z "${DIGITAL_OCEAN_TOOLBOX_USER}" ] ; then
@@ -26,8 +29,8 @@ main() {
 
     rsync \
         ${rsync_options} \
-        ${HOME}/my/share/ \
-        ${DIGITAL_OCEAN_TOOLBOX_USER}@toolbox.justworks.today:~/share/
+        ${share_source} \
+        ${DIGITAL_OCEAN_TOOLBOX_USER}@toolbox.justworks.today:${share_destination}
 }
 
 main ${@}
