@@ -14,7 +14,7 @@ main() {
     local rsync_options=''
 
     if [ -z "${DIGITAL_OCEAN_TOOLBOX_USER}" ] ; then
-	    echo "Please set a value for variable DIGITAL_OCEAN_TOOLBOX_USER"
+	    echo "Please set a value for variable: DIGITAL_OCEAN_TOOLBOX_USER"
 	    exit 1
     fi
 
