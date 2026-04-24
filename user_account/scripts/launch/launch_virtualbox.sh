@@ -20,9 +20,12 @@ main() {
 		| grep Password: \
 		| cut -d ' ' -f 2)
 
+	echo "Mounting disk that is used for storing virtual machines."
 	sudo mount UUID="${target_disk_uuid}" /mnt/temp
+
 	sudo modprobe -r "${cpu_specific_kvm_module}"
 	sudo modprobe -r kvm
+
 	virtualbox
 }
 
