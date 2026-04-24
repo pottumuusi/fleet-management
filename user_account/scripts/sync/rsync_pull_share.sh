@@ -12,7 +12,7 @@ readonly OPTIONS_DRYRUN="${OPTIONS_LIVEFIRE} --dry-run"
 
 main() {
     local -r share_source="/home/${DIGITAL_OCEAN_TOOLBOX_USER}/share/"
-    local -r share_destination="${HOME}/my/share"
+    local -r share_destination="${HOME}/my/share/"
 
     local rsync_options=''
 
