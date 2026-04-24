@@ -15,7 +15,7 @@ main() {
 	local -r cpu_specific_kvm_module=$(echo ${db_pw} | keepassxc-cli \
 		show \
 		--show-protected \
-		~/my/data/for_programs/keepass/Database.kdbx \
+		${HOME}/my/data/for_programs/keepass/Database.kdbx \
 		Network/home/cheetah/processor_specific_kvm_module \
 		| grep Password: \
 		| cut -d ' ' -f 2)
