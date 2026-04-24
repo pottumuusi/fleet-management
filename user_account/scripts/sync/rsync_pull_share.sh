@@ -26,7 +26,7 @@ main() {
 
     rsync \
         ${rsync_options} \
-	${DIGITAL_OCEAN_TOOLBOX_USER}@toolbox.justworks.today:~/share/ \
+        ${DIGITAL_OCEAN_TOOLBOX_USER}@toolbox.justworks.today:~/share/ \
         ${HOME}/my/share
 }
 
