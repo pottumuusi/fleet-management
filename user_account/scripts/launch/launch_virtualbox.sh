@@ -32,16 +32,16 @@ main() {
 
 	echo "Checking virtual machine disk precense"
 	if $(sudo /sbin/blkid | grep -q ${target_disk_uuid}) ; then
-		echo "Mounting disk that is used for storing virtual machines."
+		echo "Mounting disk that is used for storing virtual machines"
 		sudo mount UUID="${target_disk_uuid}" /mnt/temp
 	else
-		echo "Disks to mount not found."
+		echo "Disks to mount not found"
 	fi
 
 	# VirtualBox fails to start virtual machines if the kvm kernel modules
 	# are running. Trying to start results in error: "AMD-V is being used
 	# by another hypervisor (VERR_SVM_IN_USE).".
-	echo "Stopping KVM kernel modules."
+	echo "Stopping KVM kernel modules"
 	sudo modprobe -r "${cpu_specific_kvm_module}"
 	sudo modprobe -r kvm
 
