@@ -32,6 +32,9 @@ main() {
 
 	echo "Checking virtual machine disk presence"
 	if $(sudo /sbin/blkid | grep -q "${target_disk_uuid}") ; then
+		# Instead of mounting here, the virtual machine disk UUID could
+		# be added to /etc/fstab. If added, the system will fail to
+		# boot in case the disk is physically removed.
 		echo "Mounting disk that is used for storing virtual machines"
 		sudo mount UUID="${target_disk_uuid}" /mnt/temp
 	else
