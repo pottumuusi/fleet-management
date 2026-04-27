@@ -30,6 +30,7 @@ main() {
 		exit 1
 	fi
 
+	echo "Checking virtual machine disk precense"
 	if $(sudo /sbin/blkid | grep -q ${target_disk_uuid}) ; then
 		echo "Mounting disk that is used for storing virtual machines."
 		sudo mount UUID="${target_disk_uuid}" /mnt/temp
