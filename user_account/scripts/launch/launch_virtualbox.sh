@@ -20,6 +20,16 @@ main() {
 		| grep Password: \
 		| cut -d ' ' -f 2)
 
+	if [ -z "${target_disk_uuid}" ] ; then
+		echo "Missing value for target_disk_uuid"
+		exit 1
+	fi
+
+	if [ -z "${cpu_specific_kvm_module}" ] ; then
+		echo "Missing value for cpu_specific_kvm_module"
+		exit 1
+	fi
+
 	if $(sudo /sbin/blkid | grep -q ${target_disk_uuid}) ; then
 		echo "Mounting disk that is used for storing virtual machines."
 		sudo mount UUID="${target_disk_uuid}" /mnt/temp
