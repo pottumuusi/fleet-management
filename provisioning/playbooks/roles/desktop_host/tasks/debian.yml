@@ -1,0 +1,21 @@
+- name: Import role intent announcement tasks
+  ansible.builtin.import_tasks: announce_role_intent.yml
+
+- name: Import tasks for installing essential packages
+  ansible.builtin.import_tasks: install_essential_packages.yml
+
+- name: Import tasks for installing Virtualbox
+  ansible.builtin.import_tasks: install_package_virtualbox.yml
+
+- name: Import tasks for installing Spotify
+  ansible.builtin.import_tasks: install_package_spotify.yml
+
+- name: Import tasks for installing Steam
+  ansible.builtin.import_tasks: install_package_steam.yml
+
+- name: Import tasks for creating directory hierarchy
+  ansible.builtin.import_tasks: create_directory_hierarchy.yml
+
+- name: Import tasks for deploying configuration
+  ansible.builtin.import_tasks: deploy_configuration.yml
+

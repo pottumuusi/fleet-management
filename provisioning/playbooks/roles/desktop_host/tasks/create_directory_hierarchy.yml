@@ -1,0 +1,5 @@
+- name: Create a directory for code repositories
+  ansible.builtin.file:
+    path: "{{ lookup('env','HOME') }}/my/repositories"
+    state: directory
+    mode: '0755'

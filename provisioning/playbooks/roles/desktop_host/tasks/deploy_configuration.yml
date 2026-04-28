@@ -1,0 +1,4 @@
+- name: Announce to be not yet implemented
+  debug:
+    msg: Configuration deployment not yet implemented
+

@@ -1,0 +1,43 @@
+- name: Register distribution codename
+  ansible.builtin.shell: lsb_release -cs
+  register: distribution_codename
+  ignore_errors: false
+
+- name: Insert backports apt source
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list.d/backports.list
+    line: "deb http://deb.debian.org/debian {{ distribution_codename.stdout }}-backports main contrib"
+    create: yes
+  become: true
+
+- name: Import fasttrack archive keyring
+  ansible.builtin.apt:
+    pkg:
+      - fasttrack-archive-keyring
+  become: true
+
+- name: Create fasttrack apt sources file
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/fasttrack.list
+    state: touch
+    mode: '0644'
+  become: true
+
+- name: Insert fasttrack apt sources
+  ansible.builtin.blockinfile:
+    path: /etc/apt/sources.list.d/fasttrack.list
+    block: |
+      deb http://fasttrack.debian.net/debian-fasttrack/ {{ distribution_codename.stdout }}-fasttrack main contrib
+      deb http://fasttrack.debian.net/debian-fasttrack/ {{ distribution_codename.stdout }}-backports-staging main contrib
+  become: true
+
+- name: Update package repository cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: true
+
+- name: Install virtualbox package
+  ansible.builtin.apt:
+    pkg:
+      - virtualbox
+  become: true
