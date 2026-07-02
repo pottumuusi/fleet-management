@@ -10,7 +10,9 @@
 
 set -e
 
-temporary_directory="$(mktemp -d)"
+readonly temporary_directory="$(mktemp -d)"
+readonly url_vc_redist='https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe'
+readonly dir_of_ucrtbase="${HOME}/.steam/steam/steamapps/compatdata/813780/pfx/drive_c/windows/system32"
 
 error_exit() {
 	echo "${1}"
@@ -41,7 +43,7 @@ main() {
 
 	pushd "${temporary_directory}"
 
-	wget "https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe"
+	wget "${url_vc_redist}"
 
 	echo "Extracting vc_redist.x64.exe"
 	cabextract vc_redist.x64.exe
@@ -49,8 +51,8 @@ main() {
 	cabextract a10
 
 	echo "Deploying ucrtbase.dll"
-	chmod u+w ${HOME}/.steam/steam/steamapps/compatdata/813780/pfx/drive_c/windows/system32/ucrtbase.dll
-	yes | cp --verbose ./ucrtbase.dll ~/.steam/steam/steamapps/compatdata/813780/pfx/drive_c/windows/system32
+	chmod u+w ${dir_of_ucrtbase}/ucrtbase.dll
+	yes | cp --verbose ./ucrtbase.dll ${dir_of_ucrtbase}
 
 	popd # "$(mktemp -d)"
 
