@@ -33,7 +33,7 @@ main() {
 	echo "Start the game once."
 	echo ""
 
-	if [ ! -d ${temporary_directory} ] ; then
+	if [ ! -d "${temporary_directory}" ] ; then
 		error_exit "Missing temporary directory"
 	fi
 
@@ -41,7 +41,7 @@ main() {
 		error_exit "Missing cabextract"
 	fi
 
-	if [ "2" != $(ls -a -1 ${temporary_directory} | wc --lines) ] ; then
+	if [ "2" != "$(ls -a -1 "${temporary_directory}" | wc --lines)" ] ; then
 		error_exit "Created temporary directory (${temporary_directory}) is not empty"
 	fi
 
@@ -55,12 +55,12 @@ main() {
 	cabextract a10
 
 	echo "Deploying ucrtbase.dll"
-	chmod u+w ${dir_of_ucrtbase}/ucrtbase.dll
-	yes | cp --verbose ./ucrtbase.dll ${dir_of_ucrtbase}
+	chmod u+w "${dir_of_ucrtbase}"/ucrtbase.dll
+	yes | cp --verbose ./ucrtbase.dll "${dir_of_ucrtbase}"
 
 	popd # "$(mktemp -d)"
 
-	rm --verbose -rf ${temporary_directory}
+	rm --verbose -rf "${temporary_directory}"
 
 	echo "Done"
 }
