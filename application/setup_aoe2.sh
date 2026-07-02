@@ -41,6 +41,10 @@ main() {
 		error_exit "Missing cabextract"
 	fi
 
+	if [ "2" != $(ls -a -1 ${temporary_directory} | wc --lines) ] ; then
+		error_exit "Created temporary directory (${temporary_directory}) is not empty"
+	fi
+
 	pushd "${temporary_directory}"
 
 	wget "${url_vc_redist}"
