@@ -20,7 +20,7 @@ error_exit() {
 	exit 1
 }
 
-main() {
+print_setup_instructions() {
 	echo "================================="
 	echo "Start of manual part of the setup"
 	echo "================================="
@@ -41,13 +41,16 @@ main() {
 	echo "==============================="
 	echo "End of manual part of the setup"
 	echo "==============================="
+	echo ""
+	echo "To run the automated part of the setup, please run the script"
+	echo "with '${arg_manual_setup_done}' as the first argument. Like so:"
+	echo "${0} ${arg_manual_setup_done}"
+	echo ""
+}
 
+main() {
 	if [ "${1}" != "${arg_manual_setup_done}" ] ; then
-		echo ""
-		echo "To run the automated part of the setup, please run the"
-		echo "script with '${arg_manual_setup_done}' as the first"
-		echo "argument. Like so: ${0} ${arg_manual_setup_done}"
-		echo ""
+		print_setup_instructions
 		exit
 	fi
 
