@@ -60,7 +60,7 @@ main() {
 
 	popd # "$(mktemp -d)"
 
-	rm -rf ${temporary_directory}
+	rm --verbose -rf ${temporary_directory}
 
 	echo "Done"
 }
