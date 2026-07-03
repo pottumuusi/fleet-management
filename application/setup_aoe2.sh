@@ -11,7 +11,8 @@
 set -e
 
 readonly temporary_directory="$(mktemp -d)"
-readonly url_vc_redist='https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe'
+readonly exe_vc_redist='vc_redist.x64.exe'
+readonly url_vc_redist="https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/${exe_vc_redist}"
 readonly dir_of_ucrtbase="${HOME}/.steam/steam/steamapps/compatdata/813780/pfx/drive_c/windows/system32"
 readonly arg_manual_setup_done='--manual-setup-done'
 
@@ -70,8 +71,8 @@ main() {
 
 	wget "${url_vc_redist}"
 
-	echo "Extracting vc_redist.x64.exe"
-	cabextract vc_redist.x64.exe
+	echo "Extracting ${exe_vc_redist}"
+	cabextract ${exe_vc_redist}
 
 	cabextract a10
 
