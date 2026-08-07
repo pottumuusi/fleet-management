@@ -1,0 +1,5 @@
+# https://www.shotcut.org/download/
+
+- name: Announce to be not yet implemented
+  debug:
+    msg: Shotcut install not yet implemented
