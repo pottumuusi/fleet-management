@@ -62,6 +62,8 @@ main() {
         --extra-vars "hosting_operating_system=${hosting_operating_system}" \
         --ask-become-pass
 
+    # TODO run playbook again for idempotency utilizing `--check`
+
     deactivate \
         || error_exit "Failed to deactivate Python virtual environment."
 
