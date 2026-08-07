@@ -5,3 +5,5 @@ file_apt_source_spotify: /etc/apt/sources.list.d/spotify.list
 file_apt_source_backports: /etc/apt/sources.list.d/backports.list
 file_apt_source_fasttrack: /etc/apt/sources.list.d/fasttrack.list
 directory_config_repo: "{{ lookup('env','HOME') }}/my/repositories/github/pottumuusi/config"
+directory_temp_fleet_management: "/tmp/fleet-management"
+directory_temp_provisioning: "{{ directory_temp_fleet_management }}/provisioning"

@@ -1,0 +1,5 @@
+- name: Create a directory for temporary files of provisioning
+  ansible.builtin.file:
+    path: "{{ directory_temp_provisioning }}"
+    state: directory
+    mode: '0755'

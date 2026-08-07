@@ -1,0 +1,8 @@
+# Leaves behind {{ directory_temp_fleet_management }} so that provisioning
+# deletes only the files related provisioning upon exit.
+#
+# TODO implement this comment as a test instead
+- name: Remove a directory storing temporary files
+  ansible.builtin.file:
+    path: "{{ directory_temp_provisioning }}"
+    state: absent
