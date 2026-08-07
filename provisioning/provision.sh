@@ -16,7 +16,9 @@ setup_sudo_permissions() {
     fi
 
     usermod -aG sudo ${USER}
-    # TODO print and logout
+
+    echo "Logging out for refreshing groups of user: ${USER}"
+    lxqt-leave --logout
 }
 
 main() {
@@ -49,6 +51,8 @@ main() {
 
     source ${VENV_DIRECTORY}/bin/activate \
         || error_exit "Failed to activate Python virtual environment."
+
+    # TODO run Molecule(?) tests
 
     ansible-playbook                                                        \
         ./playbooks/provision_desktop_host.yml                              \
