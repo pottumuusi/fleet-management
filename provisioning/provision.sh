@@ -52,7 +52,10 @@ main() {
     source ${VENV_DIRECTORY}/bin/activate \
         || error_exit "Failed to activate Python virtual environment."
 
-    # TODO run Molecule(?) tests
+    # TODO run tests written in Bash or Ansible. If selecting Ansible, the test
+    # code can be added to end of playbook. There are some modules, such as
+    # `ansible.builtin.assert`, that are stated to be useful for testing:
+    # https://docs.ansible.com/projects/ansible/latest/reference_appendices/test_strategies.html#modules-that-are-useful-for-testing
 
     ansible-playbook                                                        \
         ./playbooks/provision_desktop_host.yml                              \
