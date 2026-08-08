@@ -7,6 +7,37 @@
 # https://protonvpn.com/support/linux-cli
 # sudo apt install proton-vpn-cli
 
+# TODO
+# * Specify the package version statically in code.
+# * Have a notification mechanism about a more recent version being available.
+#   * The notification should abort the Ansible run to draw attention.
+#   * It needs to be possible to configure the notification tasks to be skipped
+#     by changing a single line.
+
 - name: Announce to be not yet implemented
   debug:
     msg: proton-vpn-cli install not yet implemented
+
+# grep '^Filename:.*protonvpn-stable-release.*\.deb$' ~/Downloads/Packages
+# - name: Download 
+#   ansible.builtin.get_url:
+#     url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/Packages
+#     dest: # /tmp/fleet-management/provision
+#     mode:
+#     # url: http://example.com/path/file.conf
+#     # dest: /etc/foo.conf
+#     # mode: '0440'
+
+# TODO test
+#
+# Test idea:
+# 1. Store public IP address
+# 2. Read credentials from password manager
+# 3. Login
+# 4. Connect
+# 5. Verify that current public IP address is not the stored IP address
+# 6. Disconnect
+#
+# https://linuxconfig.org/how-to-use-curl-to-get-public-ip-address
+# https://github.com/rdegges/ipify-api
+# https://www.ipify.org/
