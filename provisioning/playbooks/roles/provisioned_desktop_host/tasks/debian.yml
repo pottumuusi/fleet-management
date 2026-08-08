@@ -10,26 +10,26 @@
 - name: Import tasks for setting up provisioning helper directories
   ansible.builtin.import_tasks: setup_helper_directories.yml
 
-- name: Import tasks for installing essential packages
-  ansible.builtin.import_tasks: install_essential_packages.yml
-
-- name: Import tasks for installing Virtualbox
-  ansible.builtin.import_tasks: install_package_virtualbox.yml
-
-- name: Import tasks for installing Spotify
-  ansible.builtin.import_tasks: install_package_spotify.yml
-
-- name: Import tasks for installing Steam
-  ansible.builtin.import_tasks: install_package_steam.yml
+# - name: Import tasks for installing essential packages
+#   ansible.builtin.import_tasks: install_essential_packages.yml
+# 
+# - name: Import tasks for installing Virtualbox
+#   ansible.builtin.import_tasks: install_package_virtualbox.yml
+# 
+# - name: Import tasks for installing Spotify
+#   ansible.builtin.import_tasks: install_package_spotify.yml
+# 
+# - name: Import tasks for installing Steam
+#   ansible.builtin.import_tasks: install_package_steam.yml
 
 - name: Import tasks for installing Proton VPN CLI
   ansible.builtin.import_tasks: install_package_proton_vpn_cli.yml
 
-- name: Import tasks for creating directory hierarchy
-  ansible.builtin.import_tasks: create_directory_hierarchy.yml
-
-- name: Import tasks for deploying configuration
-  ansible.builtin.import_tasks: deploy_configuration.yml
+# - name: Import tasks for creating directory hierarchy
+#   ansible.builtin.import_tasks: create_directory_hierarchy.yml
+# 
+# - name: Import tasks for deploying configuration
+#   ansible.builtin.import_tasks: deploy_configuration.yml
 
 - name: Import tasks for tearing down provisioning helper directories
   ansible.builtin.import_tasks: teardown_helper_directories.yml
