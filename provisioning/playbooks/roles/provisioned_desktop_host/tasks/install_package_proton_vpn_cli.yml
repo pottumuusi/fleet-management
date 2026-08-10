@@ -28,6 +28,8 @@
 #     # dest: /etc/foo.conf
 #     # mode: '0440'
 
+# {{ deb_protonvpn_meta_install }} # protonvpn-stable-release_1.0.8_all.deb
+
 # TODO test
 #
 # Test idea:

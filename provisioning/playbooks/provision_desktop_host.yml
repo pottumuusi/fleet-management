@@ -4,4 +4,6 @@
   hosts: 127.0.0.1
   roles:
     - provisioned_desktop_host
+  vars_files:
+    - /vars/versions.yml
 

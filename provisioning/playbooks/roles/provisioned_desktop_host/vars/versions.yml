@@ -1,0 +1,9 @@
+# directory_config_repo: "{{ lookup('env','HOME') }}/my/repositories/github/pottumuusi/config"
+
+./protonvpn-stable-release_1.0.8_all.deb
+
+# The .deb mainly tells where to find the package and how to verify the package.
+#
+# TODO explanation of the two variables below
+version_protonvpn_meta_install: "1.0.8"
+deb_protonvpn_meta_install: "protonvpn-stable-release_{{ version_protonvpn_meta_install }}_all.deb"
