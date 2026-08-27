@@ -9,4 +9,4 @@ I'd consider the most useful files of this repository to be utility scripts loca
 
 ## Credits
 
-Dedicated to open source evangelist.
+Dedicated to open source evangelist and one of the first two fellows.
