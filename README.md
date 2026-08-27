@@ -7,4 +7,6 @@ https://youtu.be/BgxklT94W0I?si=iFIp7y0_vWSSsDEa
 
 I'd consider the most useful files of this repository to be utility scripts located in [user-account/scripts](./user_account/scripts) directory.
 
+## Credits
+
 Dedicated to open source evangelist.
