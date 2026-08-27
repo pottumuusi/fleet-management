@@ -1,7 +1,5 @@
 # fleet-management
 
-Managing information technology
-
 Like a senior Python developer put it: "It's a jungle.".
 
 Interview with a Senior Python Developer - Part1
