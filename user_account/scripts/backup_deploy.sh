@@ -13,10 +13,18 @@ main() {
 		exit 1
 	fi
 
+	local -r transfer_port=$(keepassxc-cli \
+		show --show-protected \
+		${HOME}/my/data/for_programs/keepass/Database.kdbx \
+		"for_automation/backups/transfer_port" \
+		| grep "Password:" \
+		| tr -d ' ' \
+		| cut -d ':' -f 2)
+
 	pushd /tmp
 
-	wget http://${server_ip}:8000/${database_kdbx}
-	wget http://${server_ip}:8000/${official_tar}
+	wget http://${server_ip}:${transfer_port}/${database_kdbx}
+	wget http://${server_ip}:${transfer_port}/${official_tar}
 
 	cp --verbose \
 		${HOME}/my/data/for_programs/keepass/${database_kdbx} \
