@@ -8,17 +8,15 @@ debian_install_python_virtual_environment() {
     echo "Installing Python virtual environment package on Debian"
 
     sudo apt update || error_exit "[!] Failed to apt update"
-    sudo apt upgrade || error_exit "[!] Failed to apt upgrade"
-    sudo apt autoremove || error_exit "[!] Failed to apt autoremove"
+    sudo apt --yes upgrade || error_exit "[!] Failed to apt upgrade"
+    sudo apt --yes autoremove || error_exit "[!] Failed to apt autoremove"
 
-    sudo apt install python3.11-venv \
+    sudo apt --yes install python3.11-venv \
         || error_exit "[!] Failed to install python3.11-venv"
 }
 
 install_python_virtual_environment() {
-    local -r distro_name="$(grep '^NAME=' /etc/os-release | cut -d = -f 2)"
-
-    if [ "\"Debian GNU/Linux\"" == "${distro_name}" ] ; then
+    if [ "${DISTRIBUTION_NAME_DEBIAN}" == "$(get_distribution_name)" ] ; then
         debian_install_python_virtual_environment
         return
     fi
@@ -27,10 +25,10 @@ install_python_virtual_environment() {
 }
 
 main() {
-    local -r ansible_core_version="2.18.6"
-
     source ./util.sh || error_exit "Failed to load util functions."
     source ./config.sh || error_exit "Failed to load config."
+
+    local -r ansible_core_version="2.18.6"
 
     assert_variable "VENV_DIRECTORY"
 

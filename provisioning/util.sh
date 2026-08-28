@@ -8,3 +8,7 @@ assert_variable() {
         error_exit "[!] Variable ${1} has not been set."
     fi
 }
+
+get_distribution_name() {
+    grep '^NAME=' /etc/os-release | cut -d = -f 2
+}
